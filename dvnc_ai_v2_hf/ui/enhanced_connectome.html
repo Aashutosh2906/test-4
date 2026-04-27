@@ -1,0 +1,45 @@
+<div class="brain-shell panel">
+  <div class="brain-head">
+    <div>
+      <p class="eyebrow">CONNECTOME</p>
+      <h3>3D Connectome</h3>
+      <div class="brain-help">Active route pulses in orange · orbit to inspect</div>
+    </div>
+  </div>
+  <div id="dvnc-three-root"></div>
+</div>
+
+<style>
+#app-shell .grid {
+  min-height: 100vh;
+  height: auto;
+}
+
+/* Remove excessive padding causing scroll */
+.gradio-container {
+  padding: 10px !important;
+}
+
+.hero {
+  margin-bottom: 12px !important;
+}
+
+.chat-panel {
+  min-height: 280px !important;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.brain-shell {
+  min-height: 500px;
+  height: auto;
+}
+
+#dvnc-three-root {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  border-radius: 20px;
+  background: #fafbfc;
+}
+</style>

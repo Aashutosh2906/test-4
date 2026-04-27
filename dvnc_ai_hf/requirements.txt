@@ -1,0 +1,4 @@
+gradio>=5.29.0
+networkx>=3.2
+numpy>=1.26.0
+plotly>=5.24.0

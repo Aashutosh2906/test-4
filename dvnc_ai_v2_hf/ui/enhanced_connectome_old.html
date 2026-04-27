@@ -1,0 +1,183 @@
+<div class="brain-shell">
+  <div class="brain-head">
+    <div>
+      <p class="eyebrow">Connectome</p>
+      <h3>3D Concept Brain</h3>
+    </div>
+    <div class="brain-help">Active route pulses in orange · orbit to inspect</div>
+  </div>
+  <div id="dvnc-three-root">
+    <div class="orb-container">
+      <div class="orb-core"></div>
+      <div class="orb-ring ring-1"></div>
+      <div class="orb-ring ring-2"></div>
+      <div class="orb-ring ring-3"></div>
+      <div class="orb-glow"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+#app-shell .grid {
+  min-height: 100vh;
+  height: auto;
+}
+
+/* Remove excessive padding causing scroll */
+.gradio-container {
+  padding: 10px !important;
+}
+
+.hero {
+  margin-bottom: 12px !important;
+}
+
+.chat-panel {
+  min-height: 280px !important;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.orb-container {
+  position: absolute;
+  top: 20px;
+  right: 100px;
+  transform: none;
+  width: 60px;
+  height: 60px;
+  perspective: 1000px;
+  z-index: 1000;
+}
+
+.orb-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, 
+    rgba(255, 143, 102, 1) 0%,
+    rgba(255, 107, 53, 0.95) 40%,
+    rgba(255, 77, 33, 0.8) 100%
+  );
+  box-shadow: 
+    0 0 40px rgba(255, 107, 53, 0.8),
+    0 0 80px rgba(255, 107, 53, 0.6),
+    inset 0 -30px 40px rgba(0, 0, 0, 0.3),
+    inset 0 5px 20px rgba(255, 255, 255, 0.4);
+  animation: orbPulse 3s ease-in-out infinite, orbFloat 4s ease-in-out infinite;
+  z-index: 10;
+}
+
+.orb-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 107, 53, 0.4);
+  animation: ringRotate 20s linear infinite;
+}
+
+.ring-1 {
+  width: 60px;
+  height: 60px;
+  margin: -80px 0 0 -80px;
+  border-style: dashed;
+  animation-duration: 15s;
+  opacity: 0.6;
+}
+
+.ring-2 {
+  width: 70px;
+  height: 30px;
+  margin: -40px 0 0 -100px;
+  border-style: solid;
+  animation-duration: 25s;
+  animation-direction: reverse;
+  transform: rotateX(75deg);
+  opacity: 0.4;
+}
+
+.ring-3 {
+  width: 65px;
+  height: 65px;
+  margin: -90px 0 0 -90px;
+  border-style: dotted;
+  animation-duration: 18s;
+  transform: rotateY(60deg);
+  opacity: 0.5;
+}
+
+.orb-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, 
+    rgba(255, 107, 53, 0.3) 0%,
+    rgba(255, 107, 53, 0.1) 50%,
+    transparent 70%
+  );
+  animation: glowPulse 2s ease-in-out infinite alternate;
+  z-index: 5;
+}
+
+@keyframes orbPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 
+      0 0 40px rgba(255, 107, 53, 0.8),
+      0 0 80px rgba(255, 107, 53, 0.6),
+      inset 0 -30px 40px rgba(0, 0, 0, 0.3),
+      inset 0 5px 20px rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 
+      0 0 60px rgba(255, 107, 53, 1),
+      0 0 120px rgba(255, 107, 53, 0.8),
+      inset 0 -30px 40px rgba(0, 0, 0, 0.2),
+      inset 0 5px 20px rgba(255, 255, 255, 0.5);
+  }
+}
+
+@keyframes orbFloat {
+  0%, 100% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-15px);
+  }
+}
+
+@keyframes ringRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glowPulse {
+  from {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+/* Hide default working-orb if it exists */
+.working-orb {
+  display: none !important;
+}
+</style>
